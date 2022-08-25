@@ -1,0 +1,4 @@
+{
+  "message": "Missing parameter : [birthdate]",
+  "status": "BAD_REQUEST"
+}

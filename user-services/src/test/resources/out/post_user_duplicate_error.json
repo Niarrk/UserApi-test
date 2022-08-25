@@ -1,0 +1,9 @@
+{
+  "message": "The user already exist",
+  "params": {
+    "country": "France",
+    "birthdate": "2000-01-01",
+    "name": "Moi"
+  },
+  "status": "CONFLICT"
+}

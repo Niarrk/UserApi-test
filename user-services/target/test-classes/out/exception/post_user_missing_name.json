@@ -1,0 +1,4 @@
+{
+  "message": "Missing parameter : [name]",
+  "status": "BAD_REQUEST"
+}
