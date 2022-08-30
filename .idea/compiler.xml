@@ -8,8 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="user-data" />
-        <module name="user-services" />
-        <module name="user-metier" />
+        <module name="user-business" />
+        <module name="user-controller" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="16">
@@ -20,11 +20,12 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="UserApi" options="-parameters" />
+      <module name="UserApi-test" options="" />
       <module name="liquibase" options="-parameters" />
+      <module name="user-business" options="-parameters" />
       <module name="user-common" options="-parameters" />
+      <module name="user-controller" options="-parameters" />
       <module name="user-data" options="-parameters" />
-      <module name="user-metier" options="-parameters" />
-      <module name="user-services" options="-parameters" />
     </option>
   </component>
 </project>

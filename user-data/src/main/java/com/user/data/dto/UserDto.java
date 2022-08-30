@@ -44,4 +44,20 @@ public class UserDto implements Serializable {
         this.gender = user.getGender();
         this.phone = user.getPhone();
     }
+
+    /**
+     * Return User from this
+     *
+     * @return user
+     */
+    public User mapUser(){
+        User user = new User();
+        user.setName(this.name);
+        user.setCountry(this.country);
+        user.setBirthdate(this.birthdate);
+        user.setGender(this.gender);
+        user.setPhone(this.phone);
+
+        return user;
+    }
 }

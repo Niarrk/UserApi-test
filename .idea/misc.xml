@@ -7,11 +7,13 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../liquibase/pom.xml" />
         <option value="$PROJECT_DIR$/../user.service/pom.xml" />
+        <option value="$PROJECT_DIR$/../user-controller/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/user-common/pom.xml" />
+        <option value="$PROJECT_DIR$/user-controller/pom.xml" />
       </set>
     </option>
   </component>

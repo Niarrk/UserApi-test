@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 /**
- * UserDaoImpl
+ * Implementation of UserDao
  *
  * @author : Lilian
  * @version : 1.0-SNAPSHOT
@@ -25,17 +25,17 @@ public class UserDaoImpl implements UserDao {
      * Find an User by his id
      *
      * @param id Id of the user
-     * @return user
+     * @return user found
      */
     public Optional<User> findUsersById(Long id) {
         return userRepository.findById(id);
     }
 
     /**
-     * REturn if user already exist
+     * Return if user already exist
      *
-     * @param user user
-     * @return boolean
+     * @param user the user to check
+     * @return true when the user is already in bdd
      */
     public boolean checkIfExist(User user){
         User example = User.builder().name(user.getName()).country(user.getCountry()).birthdate(user.getBirthdate()).build();
@@ -45,10 +45,13 @@ public class UserDaoImpl implements UserDao {
     /**
      * Insert a new user
      *
-     * @param user user
+     * @param user the user to insert
+     * @return id of created user
      */
     @Override
-    public void insertUser(User user) {
-        this.userRepository.save(user);
+    public Long insertUser(User user) {
+        user = this.userRepository.save(user);
+
+        return user.getId();
     }
 }
