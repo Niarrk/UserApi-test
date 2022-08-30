@@ -15,21 +15,25 @@ import java.util.Optional;
 public interface UserDao {
     /**
      * Find user by id
-     * @param id User id
-     * @return User
+     *
+     * @param id Id of the user
+     * @return user found
      */
     public Optional<User> findUsersById(Long id);
 
     /**
      * Return if an user already exist
-     * @param user
-     * @return boolean
+     *
+     * @param user the user to check
+     * @return true when the user is already in bdd
      */
     public boolean checkIfExist(User user);
 
     /**
      * Create an user
-     * @param user User
+     *
+     * @param user the user to inse
+     * @return id of created user
      */
-    public void insertUser(User user);
+    public Long insertUser(User user);
 }

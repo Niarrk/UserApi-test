@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
- * User
+ *  User entity
  *
  *  @author : Lilian
  *  @version : 1.0-SNAPSHOT

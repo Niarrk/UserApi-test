@@ -49,7 +49,7 @@ public class UserPostExceptionIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 400);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/exception/post_user_missing_name.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/exception/post_user_missing_name.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**
@@ -70,7 +70,7 @@ public class UserPostExceptionIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 400);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/exception/post_user_missing_birthdate.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/exception/post_user_missing_birthdate.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**
@@ -91,7 +91,7 @@ public class UserPostExceptionIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 400);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/exception/post_user_missing_country.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/exception/post_user_missing_country.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**
@@ -112,7 +112,7 @@ public class UserPostExceptionIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 400);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/exception/post_user_incorrect_country.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/exception/post_user_incorrect_country.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**
@@ -133,7 +133,7 @@ public class UserPostExceptionIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 400);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/exception/post_user_incorrect_birthdate.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/exception/post_user_incorrect_birthdate.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**
@@ -154,7 +154,7 @@ public class UserPostExceptionIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 400);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/exception/post_user_incorrect_gender.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/exception/post_user_incorrect_gender.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**
@@ -175,7 +175,7 @@ public class UserPostExceptionIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 400);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/exception/post_user_bad_format_phone.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/exception/post_user_bad_format_phone.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**

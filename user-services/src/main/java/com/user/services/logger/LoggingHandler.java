@@ -34,8 +34,8 @@ public class LoggingHandler {
     public void controller() {
     }
 
-    @Pointcut("within(com.user.metier..*)")
-    public void metier() {
+    @Pointcut("within(com.user.business..*)")
+    public void business() {
     }
 
     @Pointcut("within(com.user.data.dao..*)")
@@ -43,13 +43,13 @@ public class LoggingHandler {
     }
 
     /**
-     * Log in and out of method with exec time
+     * Log in and out of method with exec time of controller, data and buiseness modules
      *
-     * @param joinPoint joinjoint
-     * @return ret
+     * @param joinPoint
+     * @return pass return object  of the method
      * @throws Throwable
      */
-    @Around("controller() || metier() || data()")
+    @Around("controller() || business() || data()")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         // Log start
         logStart(joinPoint.toShortString());
@@ -65,12 +65,12 @@ public class LoggingHandler {
     }
 
     /**
-     * Log throwing exceptions with stacktrace
+     * Log throwing exceptions with stacktrace of controller, data and buiseness modules
      *
      * @param joinPoint
-     * @param e
+     * @param e thrown exception
      */
-    @AfterThrowing(pointcut = "controller() || metier() || data()", throwing = "e")
+    @AfterThrowing(pointcut = "controller() || business() || data()", throwing = "e")
     public void logAfterThrow(JoinPoint joinPoint, Exception e){
         if(isLogActive){
             log.error("- Error " + joinPoint.toShortString());
@@ -84,7 +84,7 @@ public class LoggingHandler {
     /**
      * Log method start
      *
-     * @param method
+     * @param method logged method
      */
     private void logStart(String method){
         if(isLogActive){
@@ -95,8 +95,8 @@ public class LoggingHandler {
     /**
      * Log method end
      *
-     * @param method
-     * @param time
+     * @param method logged method
+     * @param time execution time
      */
     private void logEnd(String method, long time){
         if(isLogActive){

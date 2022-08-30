@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  Response handler
+ *  Response handler for controllers
  *
  * @author : Lilian
  * @version : 1.0-SNAPSHOT
@@ -17,9 +17,9 @@ public class ResponseHandler {
     /**
      * Format responseOk
      *
-     * @param status
+     * @param status http status
      * @param response
-     * @return
+     * @return ResponseEntity with status and json data
      */
     public static ResponseEntity<Object> responseOk(HttpStatus status, Object response) {
         Map<String, Object> map = new HashMap<>();
@@ -32,9 +32,9 @@ public class ResponseHandler {
     /**
      * Format error response
      *
-     * @param status status
-     * @param exception exception
-     * @return
+     * @param status http status
+     * @param exception thrown exception
+     * @return ResponseEntity with status and exception message
      */
     public static ResponseEntity<Object> responseKO(HttpStatus status, Exception exception) {
         Map<String, Object> map = new HashMap<>();
@@ -47,10 +47,10 @@ public class ResponseHandler {
     /**
      * Format error response with paramMap
      *
-     * @param status status
-     * @param exception exception
+     * @param status http status
+     * @param exception thrown exception
      * @param params map of parameters
-     * @return
+     * @return ResponseEntity with status, exception message and custom paramMap
      */
     public static ResponseEntity<Object> responseKOWithParams(HttpStatus status, Exception exception, Map<String, Object> params) {
         Map<String, Object> map = new HashMap<>();

@@ -49,7 +49,7 @@ public class UserControllerIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 201);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/post_user_ok.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/post_user_ok.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**
@@ -70,7 +70,7 @@ public class UserControllerIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 409);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/post_user_duplicate_error.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/post_user_duplicate_error.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**
@@ -90,7 +90,7 @@ public class UserControllerIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 200);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/get_user_ok.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/get_user_ok.json"),  response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**
@@ -110,7 +110,7 @@ public class UserControllerIT {
 
         // Then
         Assert.assertEquals(response.getStatus(), 404);
-        JSONAssert.assertEquals(response.getContentAsString(), getStringJsonFromFile("out/get_user_unknow.json"),  JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/get_user_unknow.json"),  response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
 

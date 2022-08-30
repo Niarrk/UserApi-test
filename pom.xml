@@ -12,7 +12,7 @@
     <modules>
         <module>user-data</module>
         <module>user-services</module>
-        <module>user-metier</module>
+        <module>user-business</module>
     </modules>
 
     <parent>
