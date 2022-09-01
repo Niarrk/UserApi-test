@@ -15,12 +15,13 @@
     <bytecodeTargetLevel target="16">
       <module name="liquibase" target="17" />
       <module name="user-common" target="16" />
+      <module name="user-controller" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="UserApi" options="-parameters" />
-      <module name="UserApi-test" options="" />
+      <module name="UserApi-test" options="-parameters" />
       <module name="liquibase" options="-parameters" />
       <module name="user-business" options="-parameters" />
       <module name="user-common" options="-parameters" />

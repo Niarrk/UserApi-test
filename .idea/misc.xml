@@ -13,7 +13,6 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/user-common/pom.xml" />
-        <option value="$PROJECT_DIR$/user-controller/pom.xml" />
       </set>
     </option>
   </component>

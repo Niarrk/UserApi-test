@@ -1,9 +1,11 @@
 package com.user.business.exception;
 
+import org.springframework.http.HttpStatus;
+
 /**
  * Exception when mandatory attribut missing
  */
-public class MissingParameterException extends RuntimeException {
+public class MissingParameterException extends RuntimeExceptionExtender {
 
     /**
      * Generete exception with standard message
@@ -11,6 +13,6 @@ public class MissingParameterException extends RuntimeException {
      * @param missingParameter missing parameter
      */
     public MissingParameterException(String missingParameter){
-        super("Missing parameter : [" + missingParameter + "]");
+        super("Missing parameter : [" + missingParameter + "]", HttpStatus.BAD_REQUEST);
     }
 }
