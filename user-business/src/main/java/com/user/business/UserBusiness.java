@@ -11,6 +11,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -37,11 +39,15 @@ public class UserBusiness {
      * @return UserDto of created user
      * @throws IOException
      */
-    public UserDto createUser(String json) throws IOException {
+    public UserDto createUser(UserDto json) throws IOException {
         UserDto user = jsonValidatorUser.validate(json);
         if(user != null){
             if(userDao.checkIfExist(user.mapUser())){
-                throw new DuplicateUserException(user);
+                Map<String, Object> params = new HashMap<>();
+                params.put("name", user.getName());
+                params.put("country", user.getCountry());
+                params.put("birthdate", user.getBirthdate());
+                throw new DuplicateUserException(params);
             }
 
             user.setId(userDao.insertUser(user.mapUser()));

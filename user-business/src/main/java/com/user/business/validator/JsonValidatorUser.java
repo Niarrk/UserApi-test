@@ -36,14 +36,10 @@ public class JsonValidatorUser {
     /**
      * Check the if the jsonUser is valid
      *
-     * @param json user in json format
-     * @return UserDto converted from json
-     * @throws JsonProcessingException if the json format is incorrect
+     * @param user user object
+     * @return UserDto valid user
      */
-    public UserDto validate(String json) throws JsonProcessingException {
-        // Convert json to user
-        UserDto user = wrapper(json);
-
+    public UserDto validate(UserDto user) {
         // Check parameters
         checkName(user.getName());
         checkBirthDateValid(user.getBirthdate());

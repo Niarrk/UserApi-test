@@ -46,8 +46,9 @@ public class UserController {
      * @return ResponseEntity format by ResponseHandler
      */
     @PostMapping
-    public ResponseEntity<Object> postUser(@RequestBody String json) throws IOException, ProcessingException, IllegalAccessException {
+    public ResponseEntity<Object> postUser(@RequestBody UserDto json) throws IOException {
         UserDto result = userBusiness.createUser(json);
+
         return ResponseHandler.responseOk(HttpStatus.CREATED, result);
     }
 }

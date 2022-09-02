@@ -18,20 +18,20 @@ public class RuntimeExceptionExtender extends RuntimeException{
     private HttpStatus status;
 
     @Getter
-    private Map<String, Object> paramMap;
+    private Map<String, Object> params;
 
     /**
      * Generate exception with message
      * @param message message
      */
-    public RuntimeExceptionExtender (String message, HttpStatus status){
+    public RuntimeExceptionExtender (final String message, final HttpStatus status){
         super(message);
         this.status = status;
     }
 
-    public RuntimeExceptionExtender (String message, HttpStatus status, Map<String, Object> params){
+    public RuntimeExceptionExtender (final String message, final HttpStatus status, final Map<String, Object> params){
         super(message);
+        this.params = params;
         this.status = status;
-        this.paramMap = params;
     }
 }

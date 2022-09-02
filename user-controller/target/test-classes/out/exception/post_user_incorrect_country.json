@@ -1,4 +1,4 @@
 {
   "message": "Country is incorrect : user must be from [France]",
-  "status": "BAD_REQUEST"
+  "status": 400
 }

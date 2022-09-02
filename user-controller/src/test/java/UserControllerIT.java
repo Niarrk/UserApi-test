@@ -38,9 +38,9 @@ public class UserControllerIT {
      */
     @Test
     public void A_PostUserValid() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/user-test/users/")
+                .post("/users/")
                 .accept(MediaType.APPLICATION_JSON).content(getStringJsonFromFile("in/post_user_ok.json"))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -59,9 +59,9 @@ public class UserControllerIT {
      */
     @Test
     public void B_PostSameUserDuplicateException() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/user-test/users/")
+                .post("/users/")
                 .accept(MediaType.APPLICATION_JSON).content(getStringJsonFromFile("in/post_user_ok.json"))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -80,9 +80,9 @@ public class UserControllerIT {
      */
     @Test
     public void C_GetExistingUser() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .get("/user-test/users/1")
+                .get("/users/1")
                 .contentType(MediaType.APPLICATION_JSON);
 
         MvcResult result = mvc.perform(requestBuilder).andReturn();
@@ -100,9 +100,9 @@ public class UserControllerIT {
      */
     @Test
     public void D_GetUnkwonUser() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .get("/user-test/users/2")
+                .get("/users/2")
                 .contentType(MediaType.APPLICATION_JSON);
 
         MvcResult result = mvc.perform(requestBuilder).andReturn();

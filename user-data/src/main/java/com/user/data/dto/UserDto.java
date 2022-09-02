@@ -52,6 +52,7 @@ public class UserDto implements Serializable {
      */
     public User mapUser(){
         User user = new User();
+        user.setId(this.id);
         user.setName(this.name);
         user.setCountry(this.country);
         user.setBirthdate(this.birthdate);

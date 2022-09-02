@@ -1,4 +1,4 @@
 {
   "message": "Gender is incorrect : must be [Male, Female, Other]",
-  "status": "BAD_REQUEST"
+  "status": 400
 }

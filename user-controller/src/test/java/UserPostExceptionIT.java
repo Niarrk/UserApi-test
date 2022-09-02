@@ -38,9 +38,9 @@ public class UserPostExceptionIT {
      */
     @Test
     public void A_PostUserMissingName() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/user-test/users/")
+                .post("/users/")
                 .accept(MediaType.APPLICATION_JSON).content(getStringJsonFromFile("in/exception/post_user_without_name.json"))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -59,9 +59,9 @@ public class UserPostExceptionIT {
      */
     @Test
     public void B_PostUserMissingBirthdate() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/user-test/users/")
+                .post("/users/")
                 .accept(MediaType.APPLICATION_JSON).content(getStringJsonFromFile("in/exception/post_user_without_birthdate.json"))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -80,9 +80,9 @@ public class UserPostExceptionIT {
      */
     @Test
     public void C_PostUserMissingCountry() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/user-test/users/")
+                .post("/users/")
                 .accept(MediaType.APPLICATION_JSON).content(getStringJsonFromFile("in/exception/post_user_without_country.json"))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -101,9 +101,9 @@ public class UserPostExceptionIT {
      */
     @Test
     public void D_PostUserIncorrectCountry() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/user-test/users/")
+                .post("/users/")
                 .accept(MediaType.APPLICATION_JSON).content(getStringJsonFromFile("in/exception/post_user_incorrect_country.json"))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -122,9 +122,9 @@ public class UserPostExceptionIT {
      */
     @Test
     public void E_PostUserIncorrectBirthdate() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/user-test/users/")
+                .post("/users/")
                 .accept(MediaType.APPLICATION_JSON).content(getStringJsonFromFile("in/exception/post_user_incorrect_birthdate.json"))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -143,9 +143,9 @@ public class UserPostExceptionIT {
      */
     @Test
     public void F_PostUserIncorrectGender() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/user-test/users/")
+                .post("/users/")
                 .accept(MediaType.APPLICATION_JSON).content(getStringJsonFromFile("in/exception/post_user_incorrect_gender.json"))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -164,9 +164,9 @@ public class UserPostExceptionIT {
      */
     @Test
     public void G_PostUserBadFormatPhone() throws Exception {
-        // Send user to /user-test/users/
+        // Send user to /users/
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/user-test/users/")
+                .post("/users/")
                 .accept(MediaType.APPLICATION_JSON).content(getStringJsonFromFile("in/exception/post_user_bad_format_phone.json"))
                 .contentType(MediaType.APPLICATION_JSON);
 

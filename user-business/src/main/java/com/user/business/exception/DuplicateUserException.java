@@ -22,12 +22,9 @@ public class DuplicateUserException extends RuntimeExceptionExtender{
     /**
      * Create duplicate exception for user
      *
-     * @param user 
+     * @param paramMap parameters map of the duplicated user
      */
-    public DuplicateUserException (UserDto user){
-        super(ERROR_MESSAGE, HttpStatus.CONFLICT,
-                Map.of("name", user.getName(),
-                        "country", user.getCountry(),
-                        "birthdate", user.getBirthdate()));
+    public DuplicateUserException (Map<String,Object> paramMap){
+        super(ERROR_MESSAGE, HttpStatus.CONFLICT, paramMap);
     }
 }

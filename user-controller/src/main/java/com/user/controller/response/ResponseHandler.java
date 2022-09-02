@@ -1,10 +1,9 @@
 package com.user.controller.response;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.user.business.exception.DuplicateUserException;
 import com.user.business.exception.RuntimeExceptionExtender;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -47,8 +46,8 @@ public class ResponseHandler {
         Map<String, Object> map = new HashMap<>();
         map.put("status", exception.getStatus().value());
         map.put("message", exception.getMessage());
-        if(exception.getParamMap() != null){
-            map.put("params", exception.getParamMap());
+        if(exception.getParams() != null){
+            map.put("params", exception.getParams());
         }
 
         return new ResponseEntity<>(map,exception.getStatus());
@@ -60,10 +59,10 @@ public class ResponseHandler {
      * @param exception thrown JsonParseException
      * @return ResponseEntity with status and exception message
      */
-    @ExceptionHandler(JsonParseException.class)
-    public ResponseEntity<Object> responseJsonParserException(JsonParseException exception){
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Object> responseJsonException(HttpMessageNotReadableException exception){
         Map<String, Object> map = new HashMap<>();
-        map.put("status", HttpStatus.BAD_REQUEST.value());
+        map.put("status", HttpStatus.BAD_REQUEST);
         map.put("message", exception.getMessage());
 
         return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);

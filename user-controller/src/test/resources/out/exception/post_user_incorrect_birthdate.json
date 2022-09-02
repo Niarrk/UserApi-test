@@ -1,4 +1,4 @@
 {
   "message": "Birthdate is incorrect : user must be an adult.",
-  "status": "BAD_REQUEST"
+  "status": 400
 }

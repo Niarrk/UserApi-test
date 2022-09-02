@@ -4,7 +4,6 @@ import com.user.business.exception.UserNotFoundException;
 import com.user.business.validator.JsonValidatorUser;
 import com.user.data.dao.UserDao;
 import com.user.data.dto.UserDto;
-import com.user.data.entity.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,15 +33,17 @@ public class UserBusinessTest extends UserTestUtils {
     @Test
     public void createUserReturnUserWhenValid() throws IOException {
         // init
-        String json = getStringJsonFromFile("user_ok.json");
+        UserDto user = getUserFromJsonFile("user_ok.json");
         UserDto attendee = getValidUser();
         Mockito.when(userDao.checkIfExist(any())).thenReturn(false);
-        Mockito.when(jsonValidatorUser.validate(json)).thenReturn(attendee);
+        Mockito.when(jsonValidatorUser.validate(user)).thenReturn(attendee);
+        Mockito.when(userDao.insertUser(any())).thenReturn(1L);
 
         // do
-        UserDto result = userBusiness.createUser(json);
+        UserDto result = userBusiness.createUser(user);
 
         // Then
+        Assert.assertEquals(1, result.getId().intValue());
         Assert.assertEquals(attendee.getCountry(), result.getCountry());
         Assert.assertEquals(attendee.getName(), result.getName());
         Assert.assertEquals(attendee.getBirthdate(), result.getBirthdate());
@@ -53,13 +54,12 @@ public class UserBusinessTest extends UserTestUtils {
     @Test
     public void createUserThrowDuplicateExceptionWhenExist() throws IOException {
         // init
-        String json = getStringJsonFromFile("user_ok.json");
-        UserDto attendee = getValidUser();
+        UserDto user = getUserFromJsonFile("user_ok.json");
         Mockito.when(userDao.checkIfExist(any())).thenReturn(true);
-        Mockito.when(jsonValidatorUser.validate(json)).thenReturn(attendee);
+        Mockito.when(jsonValidatorUser.validate(user)).thenReturn(user);
 
         // Then
-        Assert.assertThrows(DuplicateUserException.class , () -> userBusiness.createUser(json));
+        Assert.assertThrows(DuplicateUserException.class , () -> userBusiness.createUser(user));
     }
 
     @Test
@@ -72,6 +72,7 @@ public class UserBusinessTest extends UserTestUtils {
         UserDto result = userBusiness.findUserById(1L);
 
         // Then
+        Assert.assertEquals(1, result.getId().intValue());
         Assert.assertEquals(attendee.getCountry(), result.getCountry());
         Assert.assertEquals(attendee.getName(), result.getName());
         Assert.assertEquals(attendee.getBirthdate(), result.getBirthdate());

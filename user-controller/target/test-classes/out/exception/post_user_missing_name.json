@@ -1,4 +1,4 @@
 {
   "message": "Missing parameter : [name]",
-  "status": "BAD_REQUEST"
+  "status": 400
 }

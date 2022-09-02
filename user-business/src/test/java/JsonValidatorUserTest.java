@@ -30,8 +30,7 @@ public class JsonValidatorUserTest extends UserTestUtils{
     @Test
     public void validateShouldBeOk() throws IOException {
         init();
-        String json = getStringJsonFromFile("user_ok.json");
-        UserDto user = jsonValidatorUser.validate(json);
+        UserDto user = getUserFromJsonFile("user_ok.json");
         Assertions.assertEquals("Moi", user.getName());
         Assertions.assertEquals("France", user.getCountry());
         Assertions.assertEquals(LocalDate.of(2000,01,01), user.getBirthdate());
@@ -42,56 +41,49 @@ public class JsonValidatorUserTest extends UserTestUtils{
     @Test
     public void valideWithoutNameShouldMissingparameterException() throws IOException {
         init();
-        String json = getStringJsonFromFile("validator/missing_name.json");
-        Assert.assertThrows(MissingParameterException.class , () -> jsonValidatorUser.validate(json));
+        UserDto user = getUserFromJsonFile("validator/missing_name.json");
+        Assert.assertThrows(MissingParameterException.class , () -> jsonValidatorUser.validate(user));
     }
 
     @Test
     public void valideWithoutCountryShouldMissingparameterException() throws IOException {
         init();
-        String json = getStringJsonFromFile("validator/missing_country.json");
-        Assert.assertThrows(MissingParameterException.class , () -> jsonValidatorUser.validate(json));
+        UserDto user = getUserFromJsonFile("validator/missing_country.json");
+        Assert.assertThrows(MissingParameterException.class , () -> jsonValidatorUser.validate(user));
     }
 
     @Test
     public void valideWithoutBirthdateShouldMissingparameterException() throws IOException {
         init();
-        String json = getStringJsonFromFile("validator/missing_birthdate.json");
-        Assert.assertThrows(MissingParameterException.class , () -> jsonValidatorUser.validate(json));
+        UserDto user = getUserFromJsonFile("validator/missing_birthdate.json");
+        Assert.assertThrows(MissingParameterException.class , () -> jsonValidatorUser.validate(user));
     }
 
     @Test
     public void valideWithInvalidCountryShouldInvalidCountryException() throws IOException {
         init();
-        String json = getStringJsonFromFile("validator/invalid_country.json");
-        Assert.assertThrows(InvalidCountryException.class , () -> jsonValidatorUser.validate(json));
+        UserDto user = getUserFromJsonFile("validator/invalid_country.json");
+        Assert.assertThrows(InvalidCountryException.class , () -> jsonValidatorUser.validate(user));
     }
 
     @Test
     public void valideWithInvalidBirthdateShouldInvalidBirthdateException() throws IOException {
         init();
-        String json = getStringJsonFromFile("validator/invalid_birthdate.json");
-        Assert.assertThrows(InvalidBirthdateException.class , () -> jsonValidatorUser.validate(json));
+        UserDto user = getUserFromJsonFile("validator/invalid_birthdate.json");
+        Assert.assertThrows(InvalidBirthdateException.class , () -> jsonValidatorUser.validate(user));
     }
 
     @Test
     public void valideWithInvalidGenderShouldInvalidGenderException() throws IOException {
         init();
-        String json = getStringJsonFromFile("validator/invalid_gender.json");
-        Assert.assertThrows(InvalidGenderException.class , () -> jsonValidatorUser.validate(json));
+        UserDto user = getUserFromJsonFile("validator/invalid_gender.json");
+        Assert.assertThrows(InvalidGenderException.class , () -> jsonValidatorUser.validate(user));
     }
 
     @Test
     public void valideWithInvalidPhoneShouldInvalidPhoneException() throws IOException {
         init();
-        String json = getStringJsonFromFile("validator/invalid_phone_number.json");
-        Assert.assertThrows(InvalidPhoneNumberException.class , () -> jsonValidatorUser.validate(json));
-    }
-
-    @Test
-    public void valideWithBadFormatJsonShouldJsonParserException() throws IOException {
-        init();
-        String json = getStringJsonFromFile("validator/bad_format.json");
-        Assert.assertThrows(JsonParseException.class , () -> jsonValidatorUser.validate(json));
+        UserDto user = getUserFromJsonFile("validator/invalid_phone_number.json");
+        Assert.assertThrows(InvalidPhoneNumberException.class , () -> jsonValidatorUser.validate(user));
     }
 }

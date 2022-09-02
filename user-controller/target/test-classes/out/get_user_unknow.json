@@ -1,4 +1,4 @@
 {
   "message": "The user doesn't exist",
-  "status": "NOT_FOUND"
+  "status": 404
 }
