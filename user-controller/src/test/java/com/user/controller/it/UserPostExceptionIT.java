@@ -1,3 +1,5 @@
+package com.user.controller.it;
+
 import com.user.controller.UserApplication;
 import org.junit.Assert;
 import org.junit.Test;
@@ -69,7 +71,7 @@ public class UserPostExceptionIT {
         MockHttpServletResponse response = result.getResponse();
 
         // Then
-        Assert.assertEquals(400,response.getStatus());
+        Assert.assertEquals(400, response.getStatus());
         JSONAssert.assertEquals(getStringJsonFromFile("out/exception/post_user_missing_birthdate.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
@@ -111,7 +113,7 @@ public class UserPostExceptionIT {
         MockHttpServletResponse response = result.getResponse();
 
         // Then
-        Assert.assertEquals( 400, response.getStatus());
+        Assert.assertEquals(400, response.getStatus());
         JSONAssert.assertEquals(getStringJsonFromFile("out/exception/post_user_incorrect_country.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
@@ -186,7 +188,7 @@ public class UserPostExceptionIT {
      * @throws IOException
      */
     private String getStringJsonFromFile(String filePath) throws IOException {
-        byte[] encoded = Files.readAllBytes(Paths.get("src","test","resources",filePath));
+        byte[] encoded = Files.readAllBytes(Paths.get("src", "test", "resources", filePath));
         return new String(encoded, StandardCharsets.UTF_8);
     }
 }

@@ -1,11 +1,11 @@
 package com.user.business;
 
-import com.user.data.dao.UserDao;
-import com.user.data.dto.UserDto;
-import com.user.data.entity.User;
+import com.user.business.dto.UserDto;
 import com.user.business.exception.DuplicateUserException;
 import com.user.business.exception.UserNotFoundException;
 import com.user.business.validator.JsonValidatorUser;
+import com.user.data.entity.User;
+import com.user.data.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -25,13 +25,14 @@ import java.util.Optional;
 @PropertySource(value = "classpath:application.properties")
 public class UserBusiness {
 
-    @Autowired
-    private UserDao userDao;
+    private UserServices userServices;
 
-    @Autowired
     private JsonValidatorUser jsonValidatorUser;
 
-    public UserBusiness() {}
+    public UserBusiness(UserServices userServices, JsonValidatorUser jsonValidatorUser) {
+        this.userServices = userServices;
+        this.jsonValidatorUser = jsonValidatorUser;
+    }
 
     /**
      * Add a new user if the passed json is valid
@@ -42,7 +43,7 @@ public class UserBusiness {
     public UserDto createUser(UserDto json) throws IOException {
         UserDto user = jsonValidatorUser.validate(json);
         if(user != null){
-            if(userDao.checkIfExist(user.mapUser())){
+            if(userServices.checkIfExist(user.mapUser())){
                 Map<String, Object> params = new HashMap<>();
                 params.put("name", user.getName());
                 params.put("country", user.getCountry());
@@ -50,7 +51,7 @@ public class UserBusiness {
                 throw new DuplicateUserException(params);
             }
 
-            user.setId(userDao.insertUser(user.mapUser()));
+            user.setId(userServices.insertUser(user.mapUser()));
         }
 
         return user;
@@ -63,7 +64,7 @@ public class UserBusiness {
      * @return userDto found
      */
     public UserDto findUserById(Long id){
-        Optional<User> user = userDao.findUsersById(id);
+        Optional<User> user = userServices.findUsersById(id);
         if(!user.isPresent()){
             throw new UserNotFoundException();
         }

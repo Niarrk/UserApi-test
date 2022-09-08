@@ -1,11 +1,8 @@
 package com.user.controller.controller;
 
-import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 import com.user.business.UserBusiness;
+import com.user.business.dto.UserDto;
 import com.user.controller.response.ResponseHandler;
-import com.user.data.dto.UserDto;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,16 +12,23 @@ import java.io.IOException;
 /**
  * UserController
  *
- *  @author : Lilian
- *  @version : 1.0-SNAPSHOT
+ * @author : Lilian
+ * @version : 1.0-SNAPSHOT
  */
 @RestController
 @RequestMapping("users")
-@NoArgsConstructor
 public class UserController {
 
-    @Autowired
     private UserBusiness userBusiness;
+
+    /**
+     * UserController constructor
+     *
+     * @param userBusiness userBusiness bean
+     */
+    public UserController(UserBusiness userBusiness) {
+        this.userBusiness = userBusiness;
+    }
 
     /**
      * GET user by id
@@ -33,7 +37,7 @@ public class UserController {
      * @return ResponseEntity format by ResponseHandler
      */
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Object> getUserById(@PathVariable final Long id){
+    public ResponseEntity<Object> getUserById(@PathVariable final Long id) {
 
         UserDto result = userBusiness.findUserById(id);
         return ResponseHandler.responseOk(HttpStatus.OK, result);

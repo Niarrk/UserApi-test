@@ -18,8 +18,8 @@ import java.util.Arrays;
 /**
  * Aspect logs
  *
- *  @author : Lilian
- *  @version : 1.0-SNAPSHOT
+ * @author : Lilian
+ * @version : 1.0-SNAPSHOT
  */
 @Aspect
 @Component
@@ -60,7 +60,7 @@ public class LoggingHandler {
         ZonedDateTime end = ZonedDateTime.now();
 
         // log end
-        logEnd(joinPoint.toShortString(),ChronoUnit.MILLIS.between(start,end) );
+        logEnd(joinPoint.toShortString(), ChronoUnit.MILLIS.between(start, end));
         return ret;
     }
 
@@ -68,11 +68,11 @@ public class LoggingHandler {
      * Log throwing exceptions with stacktrace of controller, data and buiseness modules
      *
      * @param joinPoint
-     * @param e thrown exception
+     * @param e         thrown exception
      */
     @AfterThrowing(pointcut = "controller() || business() || data()", throwing = "e")
-    public void logAfterThrow(JoinPoint joinPoint, Exception e){
-        if(isLogActive){
+    public void logAfterThrow(JoinPoint joinPoint, Exception e) {
+        if (isLogActive) {
             log.error("- Error " + joinPoint.toShortString());
             log.error(e);
             StringBuilder sb = new StringBuilder();
@@ -86,9 +86,9 @@ public class LoggingHandler {
      *
      * @param method logged method
      */
-    private void logStart(String method){
-        if(isLogActive){
-            log.info("- Start "+ method + " -");
+    private void logStart(String method) {
+        if (isLogActive) {
+            log.info("- Start " + method + " -");
         }
     }
 
@@ -96,10 +96,10 @@ public class LoggingHandler {
      * Log method end
      *
      * @param method logged method
-     * @param time execution time
+     * @param time   execution time
      */
-    private void logEnd(String method, long time){
-        if(isLogActive){
+    private void logEnd(String method, long time) {
+        if (isLogActive) {
             log.info("- End " + method + "in " + time + "ms -");
         }
     }

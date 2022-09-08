@@ -1,9 +1,12 @@
+package com.user.business.test;
+
 import com.user.business.UserBusiness;
+import com.user.business.dto.UserDto;
 import com.user.business.exception.DuplicateUserException;
 import com.user.business.exception.UserNotFoundException;
+import com.user.business.test.utils.UserTestUtils;
 import com.user.business.validator.JsonValidatorUser;
-import com.user.data.dao.UserDao;
-import com.user.data.dto.UserDto;
+import com.user.data.services.UserServices;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,16 +31,16 @@ public class UserBusinessTest extends UserTestUtils {
     JsonValidatorUser jsonValidatorUser;
 
     @Mock
-    UserDao userDao;
+    UserServices userServices;
 
     @Test
     public void createUserReturnUserWhenValid() throws IOException {
         // init
         UserDto user = getUserFromJsonFile("user_ok.json");
         UserDto attendee = getValidUser();
-        Mockito.when(userDao.checkIfExist(any())).thenReturn(false);
+        Mockito.when(userServices.checkIfExist(any())).thenReturn(false);
         Mockito.when(jsonValidatorUser.validate(user)).thenReturn(attendee);
-        Mockito.when(userDao.insertUser(any())).thenReturn(1L);
+        Mockito.when(userServices.insertUser(any())).thenReturn(1L);
 
         // do
         UserDto result = userBusiness.createUser(user);
@@ -55,18 +58,18 @@ public class UserBusinessTest extends UserTestUtils {
     public void createUserThrowDuplicateExceptionWhenExist() throws IOException {
         // init
         UserDto user = getUserFromJsonFile("user_ok.json");
-        Mockito.when(userDao.checkIfExist(any())).thenReturn(true);
+        Mockito.when(userServices.checkIfExist(any())).thenReturn(true);
         Mockito.when(jsonValidatorUser.validate(user)).thenReturn(user);
 
         // Then
-        Assert.assertThrows(DuplicateUserException.class , () -> userBusiness.createUser(user));
+        Assert.assertThrows(DuplicateUserException.class, () -> userBusiness.createUser(user));
     }
 
     @Test
     public void findUserReturnUserFound() throws IOException {
         // init
         UserDto attendee = getValidUser();
-        Mockito.when(userDao.findUsersById(anyLong())).thenReturn(java.util.Optional.ofNullable(attendee.mapUser()));
+        Mockito.when(userServices.findUsersById(anyLong())).thenReturn(java.util.Optional.ofNullable(attendee.mapUser()));
 
         // do
         UserDto result = userBusiness.findUserById(1L);
@@ -83,9 +86,9 @@ public class UserBusinessTest extends UserTestUtils {
     @Test
     public void findUserThrowNotFoundExceptionWhenDontExist() throws IOException {
         // init
-        Mockito.when(userDao.findUsersById(anyLong())).thenReturn(Optional.ofNullable(null));
+        Mockito.when(userServices.findUsersById(anyLong())).thenReturn(Optional.ofNullable(null));
 
         // Then
-        Assert.assertThrows(UserNotFoundException.class , () -> userBusiness.findUserById(1L));
+        Assert.assertThrows(UserNotFoundException.class, () -> userBusiness.findUserById(1L));
     }
 }

@@ -7,10 +7,10 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
- *  User entity
+ * User entity
  *
- *  @author : Lilian
- *  @version : 1.0-SNAPSHOT
+ * @author : Lilian
+ * @version : 1.0-SNAPSHOT
  */
 @Getter
 @Setter

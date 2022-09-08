@@ -1,25 +1,32 @@
-package com.user.data.dao.implement;
+package com.user.data.services;
 
-import com.user.data.dao.UserDao;
 import com.user.data.entity.User;
 import com.user.data.repo.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 /**
- * Implementation of UserDao
+ * UserServices
  *
  * @author : Lilian
  * @version : 1.0-SNAPSHOT
  */
 @Service
-public class UserDaoImpl implements UserDao {
+public class UserServices {
 
-    @Autowired
     private UserRepository userRepository;
+
+    /**
+     * UserServices constructor
+     *
+     * @param repo userRepository
+     */
+    public UserServices(UserRepository repo) {
+        this.userRepository = repo;
+    }
+
 
     /**
      * Find an User by his id
@@ -37,7 +44,7 @@ public class UserDaoImpl implements UserDao {
      * @param user the user to check
      * @return true when the user is already in bdd
      */
-    public boolean checkIfExist(User user){
+    public boolean checkIfExist(User user) {
         User example = User.builder().name(user.getName()).country(user.getCountry()).birthdate(user.getBirthdate()).build();
         return userRepository.exists(Example.of(example));
     }
@@ -48,7 +55,6 @@ public class UserDaoImpl implements UserDao {
      * @param user the user to insert
      * @return id of created user
      */
-    @Override
     public Long insertUser(User user) {
         user = this.userRepository.save(user);
 

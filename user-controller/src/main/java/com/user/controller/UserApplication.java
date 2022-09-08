@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Launch controller application
@@ -17,13 +16,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.user.controller", "com.user.business", "com.user.data"})
-@EnableJpaRepositories(basePackages="com.user.data")
-@EntityScan(basePackages="com.user.data")
-@EnableSwagger2
+@EnableJpaRepositories(basePackages = "com.user.data")
+@EntityScan(basePackages = "com.user.data")
 public class UserApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UserApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(UserApplication.class, args);
+    }
 
 }

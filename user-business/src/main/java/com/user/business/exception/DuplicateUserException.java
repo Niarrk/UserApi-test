@@ -1,10 +1,8 @@
 package com.user.business.exception;
 
-import com.user.data.dto.UserDto;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**

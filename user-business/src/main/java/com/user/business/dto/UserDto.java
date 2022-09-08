@@ -1,4 +1,4 @@
-package com.user.data.dto;
+package com.user.business.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.user.data.entity.User;

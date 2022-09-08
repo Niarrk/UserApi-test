@@ -1,3 +1,5 @@
+package com.user.controller.it;
+
 import com.user.controller.UserApplication;
 import org.junit.Assert;
 import org.junit.Test;
@@ -90,7 +92,7 @@ public class UserControllerIT {
 
         // Then
         Assert.assertEquals(200, response.getStatus());
-        JSONAssert.assertEquals(getStringJsonFromFile("out/get_user_ok.json"),  response.getContentAsString(), JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/get_user_ok.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
     /**
@@ -110,7 +112,7 @@ public class UserControllerIT {
 
         // Then
         Assert.assertEquals(404, response.getStatus());
-        JSONAssert.assertEquals(getStringJsonFromFile("out/get_user_unknow.json"),  response.getContentAsString(), JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(getStringJsonFromFile("out/get_user_unknow.json"), response.getContentAsString(), JSONCompareMode.LENIENT);
     }
 
 
@@ -122,7 +124,7 @@ public class UserControllerIT {
      * @throws IOException
      */
     private String getStringJsonFromFile(String filePath) throws IOException {
-        byte[] encoded = Files.readAllBytes(Paths.get("src","test","resources",filePath));
+        byte[] encoded = Files.readAllBytes(Paths.get("src", "test", "resources", filePath));
         return new String(encoded, StandardCharsets.UTF_8);
     }
 }

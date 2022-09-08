@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  Response handler for controllers
+ * Response handler for controllers
  *
  * @author : Lilian
  * @version : 1.0-SNAPSHOT
@@ -23,7 +23,7 @@ public class ResponseHandler {
     /**
      * Format responseOk
      *
-     * @param status http status
+     * @param status   http status
      * @param response
      * @return ResponseEntity with status and json data
      */
@@ -32,7 +32,7 @@ public class ResponseHandler {
         map.put("status", status.value());
         map.put("data", response);
 
-        return new ResponseEntity<>(map,status);
+        return new ResponseEntity<>(map, status);
     }
 
     /**
@@ -46,11 +46,11 @@ public class ResponseHandler {
         Map<String, Object> map = new HashMap<>();
         map.put("status", exception.getStatus().value());
         map.put("message", exception.getMessage());
-        if(exception.getParams() != null){
+        if (exception.getParams() != null) {
             map.put("params", exception.getParams());
         }
 
-        return new ResponseEntity<>(map,exception.getStatus());
+        return new ResponseEntity<>(map, exception.getStatus());
     }
 
     /**
@@ -60,7 +60,7 @@ public class ResponseHandler {
      * @return ResponseEntity with status and exception message
      */
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<Object> responseJsonException(HttpMessageNotReadableException exception){
+    public ResponseEntity<Object> responseJsonException(HttpMessageNotReadableException exception) {
         Map<String, Object> map = new HashMap<>();
         map.put("status", HttpStatus.BAD_REQUEST);
         map.put("message", exception.getMessage());

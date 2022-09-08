@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 /**
  * UserRepository
  *
- *  @author : Lilian
- *  @version : 1.0-SNAPSHOT
+ * @author : Lilian
+ * @version : 1.0-SNAPSHOT
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
